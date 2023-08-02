@@ -51,13 +51,7 @@ const query = `
 }
   `
 
-  
-// const fuck_this_project = https\:\/\/hasura.io/jwt/claims
 export const queryAllData = () => {
-// if (JSON.parse(localStorage.getItem('queried'))) return;
-// localStorage.setItem('queried', true)
-//   console.log(localStorage.getItem('queried'))
-/* USER ID AND NAME */
 fetch('https://01.gritlab.ax/api/graphql-engine/v1/graphql', {
   method: 'POST',
   headers: {
@@ -79,7 +73,6 @@ fetch('https://01.gritlab.ax/api/graphql-engine/v1/graphql', {
       const ratio = (up / down).toFixed(2)
       const level = user.level[0].amount
 
-      console.log(user)
       const firstName = document.getElementById("first-name")
       const username = document.getElementById("user-name")
       const age = document.getElementById("age")

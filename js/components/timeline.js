@@ -14,7 +14,6 @@ let labels = []
 let values = []
 
 for (const input of sortedData) {
-    console.log(input)
     labels.push(input.path.split("curriculum/")[1])
     values.push(input.amount/1000)
 }

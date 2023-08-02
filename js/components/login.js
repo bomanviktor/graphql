@@ -31,9 +31,7 @@ class Login {
         .then((response) => response.json())
         .then((data) => {
           JWToken.value = data
-          console.log("JWToken after parsed:", JWToken.value)
           document.cookie = `token=${data}`;
-          console.log(document.cookie)
           return Auth(true)
         })
         .catch((err) => {
