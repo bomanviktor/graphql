@@ -34,7 +34,6 @@ class Login {
           })
         .then((data) => {
           JWToken.value = data
-          document.cookie = `token=${data}`;
           return Auth(true)
         })
         .catch((err) => {
