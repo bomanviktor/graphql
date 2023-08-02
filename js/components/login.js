@@ -1,7 +1,5 @@
 import { Auth, JWToken } from "./auth.js"
 
-
-
 class Login {
   form
   constructor(form) {
@@ -28,14 +26,19 @@ class Login {
         method: "POST",
         headers: headersLogin,
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Invalid credentials.")
+          } else {
+            return response.json()}
+          })
         .then((data) => {
           JWToken.value = data
           document.cookie = `token=${data}`;
           return Auth(true)
         })
         .catch((err) => {
-          console.error(err)
+          alert(err)
           return Auth(false)
         })
     }
@@ -52,12 +55,3 @@ export const loginController = () => {
   }
 }
 
-// function parseJwt (token) {
-//     var base64Url = token.split('.')[1];
-//     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-//     var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
-//         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-//     }).join(''));
-
-//     return JSON.parse(jsonPayload);
-// }
